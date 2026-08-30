@@ -343,13 +343,11 @@ body[data-mood="close"] #atmosphere {
 }
 
 .frame img {
-  transform: scale(1.02);
-  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 
-.sec.in .frame img,
 .frame:hover img {
-  transform: scale(1.06);
+  /* hover handled by section animations */
 }
 
 .frame figcaption {
@@ -411,9 +409,21 @@ body[data-mood="close"] #atmosphere {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
 
-.tile img {
+.tile-media {
+  position: relative;
+  overflow: hidden;
   aspect-ratio: 16 / 11;
-  height: auto;
+}
+
+.tile-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tile img {
+  aspect-ratio: auto;
+  height: 100%;
 }
 
 .tile-body {
@@ -720,8 +730,13 @@ body[data-mood="close"] #atmosphere {
 .career-rail li,
 .metrics article {
   opacity: 0;
-  transform: translateY(1.25rem);
-  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(1.4rem);
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.85s ease,
+    border-radius 0.6s ease;
+  filter: blur(6px);
 }
 
 .sec.in .copy,
@@ -733,22 +748,435 @@ body[data-mood="close"] #atmosphere {
 .sec.in .metrics article {
   opacity: 1;
   transform: none;
+  filter: none;
 }
 
 .sec.in .tile:nth-child(2) {
-  transition-delay: 0.1s;
+  transition-delay: 0.12s;
 }
 .sec.in .tile:nth-child(3) {
-  transition-delay: 0.2s;
+  transition-delay: 0.24s;
 }
 .sec.in .skill-band article:nth-child(2) {
-  transition-delay: 0.08s;
+  transition-delay: 0.1s;
 }
 .sec.in .skill-band article:nth-child(3) {
-  transition-delay: 0.16s;
+  transition-delay: 0.2s;
 }
 .sec.in .skill-band article:nth-child(4) {
+  transition-delay: 0.3s;
+}
+.sec.in .metrics article:nth-child(2) {
+  transition-delay: 0.08s;
+}
+.sec.in .metrics article:nth-child(3) {
+  transition-delay: 0.16s;
+}
+.sec.in .metrics article:nth-child(4) {
   transition-delay: 0.24s;
+}
+.sec.in .metrics article:nth-child(5) {
+  transition-delay: 0.32s;
+}
+.sec.in .metrics article:nth-child(6) {
+  transition-delay: 0.4s;
+}
+
+/* —— Text motion —— */
+.anim-text {
+  opacity: 0;
+  transform: translateY(0.8rem);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sec.in .anim-text {
+  opacity: 1;
+  transform: none;
+}
+.sec.in .eyebrow.anim-text {
+  transition-delay: 0.05s;
+}
+.sec.in h1 .kanji.anim-text,
+.sec.in h2.anim-text {
+  transition-delay: 0.15s;
+}
+.sec.in h1 .latin.anim-text {
+  transition-delay: 0.28s;
+}
+.sec.in .manifesto.anim-text,
+.sec.in .lede.anim-text {
+  transition-delay: 0.4s;
+}
+
+.anim-pop {
+  opacity: 0;
+  transform: scale(0.85) translateY(8px);
+  transition: opacity 0.5s ease, transform 0.55s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+.sec.in .anim-pop {
+  opacity: 1;
+  transform: none;
+}
+.sec.in .tags .anim-pop:nth-child(1) {
+  transition-delay: 0.45s;
+}
+.sec.in .tags .anim-pop:nth-child(2) {
+  transition-delay: 0.55s;
+}
+.sec.in .tags .anim-pop:nth-child(3) {
+  transition-delay: 0.65s;
+}
+.sec.in .tags .anim-pop:nth-child(4) {
+  transition-delay: 0.75s;
+}
+
+/* —— Image animation modes —— */
+.frame img,
+.tile-media img {
+  transform: scale(1.08);
+  transition: transform 8s ease-out;
+}
+.sec.in .anim-kenburns img {
+  animation: kenBurns 14s ease-in-out infinite alternate;
+}
+.sec.in .anim-pan img {
+  animation: panSlide 16s ease-in-out infinite alternate;
+}
+.sec.in .anim-float {
+  animation: floatY 5s ease-in-out infinite;
+}
+.sec.in .anim-rise {
+  animation: none;
+}
+.sec.in .anim-glitch img {
+  animation: neonFlicker 3.5s steps(2, end) infinite;
+}
+.sec.in .anim-spin-slow {
+  animation: none;
+}
+.sec.in .anim-spin-slow img {
+  animation: slowSpin 28s linear infinite;
+}
+.sec.in .anim-spin-border .shape-ring,
+.sec.in .anim-pulse-border .shape-ring {
+  animation: ringSpin 6s linear infinite;
+}
+.sec.in .anim-pulse-border {
+  animation: pulseScale 3.2s ease-in-out infinite;
+}
+
+@keyframes kenBurns {
+  from {
+    transform: scale(1.05) translate(0, 0);
+  }
+  to {
+    transform: scale(1.18) translate(-3%, 2%);
+  }
+}
+@keyframes panSlide {
+  from {
+    transform: scale(1.12) translateX(-4%);
+  }
+  to {
+    transform: scale(1.12) translateX(4%);
+  }
+}
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes neonFlicker {
+  0%,
+  100% {
+    filter: brightness(1) contrast(1.05);
+  }
+  50% {
+    filter: brightness(1.15) saturate(1.2);
+  }
+  52% {
+    filter: brightness(0.9);
+  }
+}
+@keyframes slowSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes ringSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pulseScale {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.025);
+  }
+}
+@keyframes dashDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes borderGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 1px rgba(198, 164, 90, 0.35), 0 20px 50px rgba(0, 0, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 1px rgba(94, 200, 216, 0.55), 0 0 28px rgba(94, 200, 216, 0.2), 0 20px 50px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* —— Shape system (content-matched frames) —— */
+.frame {
+  border: none;
+}
+.frame::after {
+  display: none;
+}
+.shape-ring {
+  position: absolute;
+  inset: -3px;
+  pointer-events: none;
+  z-index: 4;
+  border: 1.5px solid rgba(198, 164, 90, 0.55);
+  opacity: 0.85;
+}
+
+/* Mountain / Fuji peak */
+.shape-mountain,
+.shape-mountain .tile-media {
+  clip-path: polygon(50% 0%, 100% 88%, 92% 100%, 8% 100%, 0% 88%);
+}
+.shape-mountain .shape-ring {
+  clip-path: polygon(50% 0%, 100% 88%, 92% 100%, 8% 100%, 0% 88%);
+  border: none;
+  background: linear-gradient(180deg, rgba(198, 164, 90, 0.5), transparent 40%);
+  mix-blend-mode: screen;
+}
+
+/* River wave */
+.shape-wave .tile-media {
+  clip-path: polygon(
+    0% 8%,
+    12% 0%,
+    28% 10%,
+    42% 2%,
+    58% 12%,
+    72% 0%,
+    88% 10%,
+    100% 4%,
+    100% 100%,
+    0% 100%
+  );
+}
+.shape-wave .shape-ring {
+  border: none;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(94, 200, 216, 0.35), transparent);
+  animation: panSlide 8s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+  clip-path: inherit;
+}
+
+/* Torii / gate arch */
+.shape-torii .tile-media {
+  clip-path: polygon(0% 18%, 8% 18%, 8% 0%, 92% 0%, 92% 18%, 100% 18%, 100% 100%, 0% 100%);
+}
+.shape-torii .shape-ring {
+  clip-path: polygon(0% 18%, 8% 18%, 8% 0%, 92% 0%, 92% 18%, 100% 18%, 100% 100%, 0% 100%);
+}
+
+/* Fan / wide scenic */
+.shape-fan {
+  clip-path: ellipse(50% 48% at 50% 50%);
+  border-radius: 50% / 42%;
+}
+.shape-fan .shape-ring {
+  border-radius: 50% / 42%;
+  border-color: rgba(194, 58, 43, 0.45);
+}
+
+/* Neon slash / parallelogram */
+.shape-slash {
+  clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+  animation: borderGlow 4s ease-in-out infinite;
+}
+.shape-slash .shape-ring {
+  clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+  border-color: rgba(255, 77, 109, 0.65);
+}
+
+/* Salon soft oval */
+.shape-oval {
+  clip-path: ellipse(48% 46% at 50% 50%);
+  border-radius: 50%;
+}
+.shape-oval .shape-ring {
+  border-radius: 50%;
+  border-color: rgba(194, 58, 43, 0.5);
+}
+
+/* Portrait capsule */
+.shape-capsule {
+  clip-path: inset(0 round 40% / 18%);
+  border-radius: 40% / 18%;
+}
+.shape-capsule .shape-ring {
+  border-radius: 40% / 18%;
+}
+
+/* Hex — AI / chain */
+.shape-hex {
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+.shape-hex .shape-ring {
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  border-color: rgba(94, 200, 216, 0.65);
+}
+
+/* Coin circle */
+.shape-coin {
+  clip-path: circle(46% at 50% 50%);
+  border-radius: 50%;
+  aspect-ratio: 1 / 1 !important;
+}
+.shape-coin .shape-ring {
+  border-radius: 50%;
+  border-width: 3px;
+  border-color: rgba(198, 164, 90, 0.7);
+}
+.shape-coin figcaption {
+  border-radius: 0 0 50% 50%;
+}
+
+/* Diamond — betting */
+.shape-diamond {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  aspect-ratio: 1 / 1 !important;
+}
+.shape-diamond .shape-ring {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  border-color: rgba(194, 58, 43, 0.55);
+}
+.shape-diamond figcaption {
+  bottom: 18%;
+  background: linear-gradient(transparent, rgba(8, 6, 10, 0.85));
+}
+
+/* Arch — contact */
+.shape-arch {
+  clip-path: polygon(0% 12%, 0% 100%, 100% 100%, 100% 12%, 85% 0%, 15% 0%);
+}
+.shape-arch .shape-ring {
+  clip-path: polygon(0% 12%, 0% 100%, 100% 100%, 100% 12%, 85% 0%, 15% 0%);
+}
+
+/* Present panel shapes */
+.present.shape-ink {
+  border-radius: 1.25rem 0.35rem 1.5rem 0.5rem;
+  border-left: 3px solid var(--shu);
+  animation: borderGlow 7s ease-in-out infinite;
+}
+.present.shape-scroll {
+  border-radius: 0.25rem 1.75rem 0.25rem 1.75rem;
+  border-top: 2px solid var(--kin);
+}
+
+.skill-band {
+  border-radius: 1rem;
+  overflow: hidden;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: transparent;
+  border: none;
+}
+.skill-band article {
+  border-right: none !important;
+  border-radius: 0.85rem;
+  background: rgba(12, 11, 16, 0.92) !important;
+  border: 1px solid rgba(198, 164, 90, 0.22);
+}
+.shape-panel-a {
+  border-radius: 1.4rem 0.4rem 1.4rem 0.4rem !important;
+}
+.shape-panel-b {
+  border-radius: 0.4rem 1.4rem 0.4rem 1.4rem !important;
+}
+.shape-panel-c {
+  clip-path: polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%);
+}
+.shape-panel-d {
+  border-radius: 50% 0.5rem 50% 0.5rem / 1.2rem !important;
+}
+
+.career-rail {
+  border-radius: 0 1.25rem 1.25rem 0;
+  overflow: hidden;
+}
+.career-rail li {
+  transition-delay: 0s;
+}
+.sec.in .career-rail li:nth-child(1) {
+  transition-delay: 0.05s;
+}
+.sec.in .career-rail li:nth-child(2) {
+  transition-delay: 0.15s;
+}
+.sec.in .career-rail li:nth-child(3) {
+  transition-delay: 0.25s;
+}
+.sec.in .career-rail li:nth-child(4) {
+  transition-delay: 0.35s;
+}
+
+.shape-metric {
+  border-radius: 1.25rem 0.35rem;
+  clip-path: polygon(0 0, 100% 0, 100% 78%, 92% 100%, 0 100%);
+}
+.metrics {
+  gap: 0.65rem;
+  background: transparent;
+  border: none;
+}
+.metrics article {
+  border: 1px solid rgba(198, 164, 90, 0.28);
+}
+
+.tile {
+  border-radius: 1rem;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+.tile-body {
+  background: rgba(14, 12, 18, 0.94);
+  border: 1px solid rgba(198, 164, 90, 0.22);
+  border-radius: 0 0 1rem 1rem;
+  margin-top: -0.35rem;
+  position: relative;
+  z-index: 2;
+}
+.shape-mountain .tile-body {
+  border-radius: 0 0 1.5rem 1.5rem;
+}
+.shape-wave .tile-body {
+  border-radius: 1rem 0.25rem 1.25rem 0.35rem;
+}
+.shape-torii .tile-body {
+  border-radius: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
 @media (max-width: 980px) {
@@ -768,7 +1196,7 @@ body[data-mood="close"] #atmosphere {
 
   .skill-band article {
     border-right: none;
-    border-bottom: 1px solid rgba(198, 164, 90, 0.18);
+    border-bottom: none;
   }
 
   .career-rail li {
@@ -779,6 +1207,17 @@ body[data-mood="close"] #atmosphere {
   .hero-frame {
     aspect-ratio: 16 / 10;
     max-height: none;
+  }
+
+  .shape-coin,
+  .shape-diamond {
+    aspect-ratio: 16 / 10 !important;
+    max-width: 100%;
+    margin-inline: auto;
+  }
+
+  .shape-coin {
+    clip-path: circle(48% at 50% 50%);
   }
 
   #rail span {
@@ -792,5 +1231,15 @@ body[data-mood="close"] #atmosphere {
   }
   .metrics {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.2s !important;
   }
 }
