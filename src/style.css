@@ -57,40 +57,55 @@ a:hover {
   pointer-events: none;
 }
 
+/* Dim the game-world so the PRESENT (portfolio) reads first */
 #atmosphere {
   position: fixed;
   inset: 0;
   z-index: 1;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 80% 55% at 75% 15%, rgba(194, 58, 43, 0.06), transparent 55%),
-    linear-gradient(180deg, rgba(10, 9, 12, 0.05), rgba(10, 9, 12, 0.42));
-  transition: background 1.2s ease;
+    radial-gradient(ellipse 70% 50% at 50% 40%, rgba(6, 8, 16, 0.15), transparent 60%),
+    linear-gradient(180deg, rgba(6, 8, 14, 0.35), rgba(6, 8, 14, 0.72));
+  transition: background 1s ease;
 }
 
-body[data-mood="neon"] #atmosphere {
+body[data-mood="neon"] #atmosphere,
+body[data-mood="dawn"] #atmosphere,
+body[data-mood="circuit"] #atmosphere,
+body[data-mood="mist"] #atmosphere,
+body[data-mood="desk"] #atmosphere,
+body[data-mood="ink"] #atmosphere,
+body[data-mood="gold"] #atmosphere,
+body[data-mood="close"] #atmosphere {
   background:
-    radial-gradient(ellipse 70% 50% at 30% 40%, rgba(255, 77, 109, 0.22), transparent 55%),
-    radial-gradient(ellipse 50% 40% at 80% 70%, rgba(60, 180, 255, 0.15), transparent 50%),
-    linear-gradient(180deg, rgba(8, 4, 12, 0.2), rgba(8, 4, 12, 0.85));
-}
-
-body[data-mood="dawn"] #atmosphere {
-  background:
-    radial-gradient(ellipse 90% 55% at 60% 30%, rgba(232, 170, 120, 0.18), transparent 55%),
-    linear-gradient(180deg, rgba(12, 14, 22, 0.25), rgba(10, 9, 12, 0.7));
-}
-
-body[data-mood="circuit"] #atmosphere {
-  background:
-    radial-gradient(ellipse 60% 50% at 50% 40%, rgba(94, 200, 216, 0.14), transparent 55%),
-    radial-gradient(ellipse 40% 40% at 80% 20%, rgba(198, 164, 90, 0.12), transparent 50%),
-    linear-gradient(180deg, rgba(8, 10, 16, 0.3), rgba(8, 10, 16, 0.8));
+    radial-gradient(ellipse 65% 45% at 70% 30%, rgba(20, 40, 80, 0.2), transparent 55%),
+    linear-gradient(180deg, rgba(6, 8, 14, 0.4), rgba(6, 8, 14, 0.78));
 }
 
 #scroll {
   position: relative;
   z-index: 2;
+}
+
+/* —— Present layer: portfolio content, independent of 3D game world —— */
+.present {
+  background: rgba(12, 11, 16, 0.88);
+  border: 1px solid rgba(198, 164, 90, 0.28);
+  box-shadow:
+    0 28px 80px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  padding: clamp(1.35rem, 3vw, 2.1rem);
+}
+
+.copy.present,
+.sec-head.present {
+  max-width: 36rem;
+}
+
+.sec-head.present {
+  max-width: 42rem;
 }
 
 /* —— Brand —— */
@@ -314,7 +329,8 @@ body[data-mood="circuit"] #atmosphere {
   isolation: isolate;
   aspect-ratio: 16 / 10;
   background: var(--sumi);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(198, 164, 90, 0.28);
 }
 
 .frame::after {
@@ -387,11 +403,12 @@ body[data-mood="circuit"] #atmosphere {
 }
 
 .tile {
-  background: var(--sumi);
-  border: 1px solid rgba(198, 164, 90, 0.2);
+  background: rgba(14, 12, 18, 0.94);
+  border: 1px solid rgba(198, 164, 90, 0.22);
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
 
 .tile img {
@@ -431,7 +448,10 @@ body[data-mood="circuit"] #atmosphere {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
-  border-top: 1px solid var(--line);
+  border: 1px solid var(--line);
+  background: rgba(12, 11, 16, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .skill-band article {
@@ -491,8 +511,11 @@ body[data-mood="circuit"] #atmosphere {
   list-style: none;
   display: grid;
   gap: 0;
-  border-left: 1px solid var(--line);
-  margin-left: 0.35rem;
+  margin-left: 0;
+  background: rgba(12, 11, 16, 0.9);
+  border: 1px solid rgba(198, 164, 90, 0.22);
+  border-left: 3px solid var(--shu);
+  backdrop-filter: blur(14px);
 }
 
 .career-rail li {
@@ -556,10 +579,11 @@ body[data-mood="circuit"] #atmosphere {
   gap: 1px;
   background: var(--line);
   border: 1px solid var(--line);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
 }
 
 .metrics article {
-  background: var(--bg);
+  background: rgba(12, 11, 16, 0.95);
   padding: 2rem 1.25rem;
   text-align: center;
 }
