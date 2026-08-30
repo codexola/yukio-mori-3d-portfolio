@@ -3,218 +3,285 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>森 幸夫 | Mori Yukio — Full-Stack &amp; AI Engineer</title>
-  <meta name="description" content="約8年 — FinTech / GovTech / SaaS / AI。バックエンド・AI・クラウドを横断するフルスタックエンジニア。" />
+  <title>森 幸夫 | MORI — AI · Chain · Japan</title>
+  <meta name="description" content="森 幸夫 — Full-Stack / AI / Blockchain。伝統と夜の街、エージェントと台帳を横断する新時代エンジニア。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/src/style.css" />
 </head>
 <body>
-  <div id="loader" aria-live="polite">
-    <span class="loader-mark">森</span>
-    <span class="loader-label">Rendering continuum · 昼と夜</span>
+  <div id="loader">
+    <div class="loader-inner">
+      <span class="loader-seal">森</span>
+      <span class="loader-line"></span>
+      <span class="loader-label">AI · CHAIN · 伝統</span>
+    </div>
   </div>
 
   <canvas id="scene" aria-hidden="true"></canvas>
-  <div id="vignette" aria-hidden="true"></div>
-  <div id="grain" aria-hidden="true"></div>
+  <div id="atmosphere" aria-hidden="true"></div>
 
   <header id="brand">
-    <p class="brand-name">森 幸夫</p>
-    <p class="brand-en">MORI YUKIO</p>
-    <p class="brand-role">Full-Stack · AI · Technical Lead</p>
-    <nav class="brand-links">
+    <a class="seal" href="#top">森</a>
+    <div class="brand-meta">
+      <p class="brand-name">森 幸夫</p>
+      <p class="brand-sub">AI Engineer · Chain Architect · Japan</p>
+    </div>
+    <nav class="brand-nav">
       <a href="https://github.com/crystal70916" target="_blank" rel="noopener">GitHub</a>
-      <a href="mailto:ka6994388@gmail.com">Mail</a>
-      <a href="https://t.me/famouspig" target="_blank" rel="noopener">Telegram</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <div id="progress" role="navigation" aria-label="Sections"></div>
-  <p id="hint"><span>Scroll</span> · 旅をはじめる</p>
+  <aside id="rail" aria-label="Journey">
+    <button type="button" data-jump="0" class="on"><i></i><span>壱</span></button>
+    <button type="button" data-jump="1"><i></i><span>弐</span></button>
+    <button type="button" data-jump="2"><i></i><span>参</span></button>
+    <button type="button" data-jump="3"><i></i><span>四</span></button>
+    <button type="button" data-jump="4"><i></i><span>伍</span></button>
+    <button type="button" data-jump="5"><i></i><span>六</span></button>
+    <button type="button" data-jump="6"><i></i><span>七</span></button>
+    <button type="button" data-jump="7"><i></i><span>八</span></button>
+  </aside>
 
   <main id="scroll">
-    <!-- 00 Hero -->
-    <section class="section hero" data-i="0">
-      <div class="panel hero-panel">
-        <p class="kicker">PORTFOLIO · 2026</p>
-        <h1>森 幸夫</h1>
-        <p class="jp">Mori Yukio · フルスタック / AI / テクニカルリード</p>
-        <p class="lead">「技術は、静かに人の仕事を支えるためにある。」</p>
-        <p>冒頭の立体は<strong>富士山</strong>（雪・岩・樹林）。砂丘ではありません。スクロールで山・川・名所、経歴、昼と夜の開発へ。</p>
+    <!-- 0 HERO -->
+    <section class="sec hero" id="top" data-i="0" data-mood="dawn">
+      <div class="sec-grid">
+        <div class="copy">
+          <p class="eyebrow">PORTFOLIO 2026 · 新時代</p>
+          <h1>
+            <span class="kanji">森 幸夫</span>
+            <span class="latin">Mori Yukio</span>
+          </h1>
+          <p class="manifesto">伝統の静けさと、夜の灯、AIと台帳のあいだで——静かに仕事を支える設計をする。</p>
+          <ul class="tags">
+            <li>AI / Agent / RAG</li>
+            <li>FinTech Ledger</li>
+            <li>On-chain Fairness</li>
+            <li>Japan</li>
+          </ul>
+        </div>
+        <figure class="frame hero-frame">
+          <img src="/images/mt-fuji-dawn.png" alt="富士山の夜明け" />
+          <figcaption>山 · 富士 — はじまりの閾</figcaption>
+        </figure>
       </div>
     </section>
 
-    <!-- 01 Profile -->
-    <section class="section" data-i="1">
-      <div class="panel wide">
-        <p class="kicker">01 — Profile</p>
-        <h2>経歴概要</h2>
-        <p class="jp">業務構造を、システム設計へ変換する</p>
-        <p>約8年間、バックエンドおよびAIエンジニアとして高トラフィック決済基盤、行政クラウド化、SaaSマイクロサービス化、AIエージェント/RAG構築まで一貫して担当。直近の生成AI業務自動化では最大<strong>60%</strong>の工数削減を実現。</p>
-        <ul class="pillars">
-          <li><strong>課題起点の設計</strong> — 暗黙知を構造化し、実装可能な仕様へ</li>
-          <li><strong>0→1〜運用</strong> — PoCで終わらず、本番まで一気通貫</li>
-          <li><strong>グローバル適応</strong> — オフショアブリッジで曖昧要件を仕様化</li>
-        </ul>
+    <!-- 1 TRADITION -->
+    <section class="sec" data-i="1" data-mood="mist">
+      <div class="sec-head">
+        <p class="eyebrow">壱 · 景色</p>
+        <h2>伝統を、立体の記憶に</h2>
+        <p class="lede">山・川・名所。日本の風景は装飾ではなく、設計の基準——静けさ、流れ、門の閾。</p>
       </div>
+      <div class="triptych">
+        <article class="tile">
+          <img src="/images/mt-fuji-dawn.png" alt="富士山" />
+          <div class="tile-body">
+            <h3>山</h3>
+            <p>富士 — 積雪と岩肌。システムもまた、頂点と基盤の比率で読まれる。</p>
+          </div>
+        </article>
+        <article class="tile">
+          <img src="/images/japan-river-autumn.png" alt="秋の川" />
+          <div class="tile-body">
+            <h3>川</h3>
+            <p>信濃・利根 — 非同期の流れ。滞留すれば、決済も知識も腐る。</p>
+          </div>
+        </article>
+        <article class="tile">
+          <img src="/images/itsukushima-torii.png" alt="厳島の鳥居" />
+          <div class="tile-body">
+            <h3>名所</h3>
+            <p>厳島・嵐山 — 門をくぐる体験設計。UXとは閾のデザインである。</p>
+          </div>
+        </article>
+      </div>
+      <figure class="frame wide-frame">
+        <img src="/images/kyoto-scenic.png" alt="京都の景色" />
+        <figcaption>古都の光 — 嵐山から続く時間軸</figcaption>
+      </figure>
     </section>
 
-    <!-- 02 Day / Night -->
-    <section class="section" data-i="2">
-      <div class="panel">
-        <p class="kicker">02 — Continuum</p>
-        <h2>昼と夜の開発者</h2>
-        <p class="jp">Days of design · Nights of shipping</p>
-        <p>朝はアーキテクチャとレビュー。夕暮れから深夜はエージェント、RAG、監視アラートと向き合う。机のランプが点くとき、コードはまだ生きている。</p>
-      </div>
-    </section>
-
-    <!-- 03 Skills -->
-    <section class="section" data-i="3">
-      <div class="panel wide">
-        <p class="kicker">03 — Expertise</p>
-        <h2>専門技術</h2>
-        <p class="jp">Core stack · 立体化したスキルマップ</p>
-        <div class="skill-grid">
-          <article>
-            <h3>AI / Agent / RAG</h3>
-            <p class="yrs">実務 5年+</p>
-            <p>OpenAI · Claude · LangChain · Dify · RAG · pgvector</p>
-          </article>
-          <article>
-            <h3>Backend</h3>
-            <p class="yrs">実務 6年+</p>
-            <p>FastAPI · Spring Boot · REST/OpenAPI · 冪等性 · 非同期/バッチ</p>
-          </article>
-          <article>
-            <h3>AWS / Cloud</h3>
-            <p class="yrs">実務 5年+</p>
-            <p>ECS · EKS · EC2 · RDS · S3 · Lambda · Multi-AZ 99.9%</p>
-          </article>
-          <article>
-            <h3>DB / Ledger</h3>
-            <p class="yrs">実務 5年+</p>
-            <p>PostgreSQL · MySQL · 金融Ledger · Index · Query tuning</p>
-          </article>
-          <article>
-            <h3>推進 / Bridge</h3>
-            <p class="yrs">実務 8年+</p>
-            <p>要件定義 · PM補佐/PL · オフショア · QA標準化</p>
-          </article>
+    <!-- 2 SALON / NIGHT DISTRICT -->
+    <section class="sec night" data-i="2" data-mood="neon">
+      <div class="sec-grid invert">
+        <figure class="frame glow-frame">
+          <img src="/images/neon-district-night.png" alt="ネオンの夜の街" />
+          <figcaption>花街の灯 · Night Gate</figcaption>
+        </figure>
+        <div class="copy">
+          <p class="eyebrow">弐 · 夜の街</p>
+          <h2>Brothel · Salon · Neon</h2>
+          <p class="lede">歌舞伎町的なネオンと、サロンの灯り。夜の日本は、プロトコルと同じく——入口・信頼・空気感で動く。</p>
+          <p>ホスト/サロン文化の空間設計を、プロダクトの「間」と「閾」に読み替える。派手さではなく、滞在のリズム。</p>
         </div>
       </div>
-    </section>
-
-    <!-- 04 Career -->
-    <section class="section" data-i="4">
-      <div class="panel wide">
-        <p class="kicker">04 — Career</p>
-        <h2>職務経歴</h2>
-        <p class="jp">沿革 · 2019 — 現在</p>
-        <ol class="timeline">
-          <li>
-            <time>2019.02 — 2022.01</time>
-            <strong>RedSquare Technologies</strong>
-            <span>FinTech / GovTech · BE / 設計リード補佐</span>
-          </li>
-          <li>
-            <time>2022.05 — 2024.02</time>
-            <strong>株式会社Scoville</strong>
-            <span>AI · SaaS · テックリード補佐</span>
-          </li>
-          <li>
-            <time>2024.03 — 2025.09</time>
-            <strong>CMC Japan</strong>
-            <span>ブリッジ / API設計責任者</span>
-          </li>
-          <li>
-            <time>2025.11 — 現在</time>
-            <strong>フリーランス</strong>
-            <span>AIエージェント · RAG · 業務自動化</span>
-          </li>
-        </ol>
+      <div class="duo">
+        <figure class="frame">
+          <img src="/images/salon-interior.png" alt="サロンの内装" />
+          <figcaption>Salon — 朱と漆の間</figcaption>
+        </figure>
+        <figure class="frame">
+          <img src="/images/district-figures.png" alt="夜の通りの人影" />
+          <figcaption>通りの人 — 顔は影、空気が主役</figcaption>
+        </figure>
       </div>
     </section>
 
-    <!-- 05 Cases -->
-    <section class="section" data-i="5">
-      <div class="panel wide">
-        <p class="kicker">05 — Cases</p>
-        <h2>主な実績</h2>
-        <p class="jp">Selected outcomes · NDAにより一部抽象化</p>
-        <div class="cases">
-          <article><h3>E-Wallet決済基盤</h3><p>数千TPS · Ledger · 性能+35%</p></article>
-          <article><h3>デジタル行政</h3><p>FastAPI · ECS · 稼働率99.9%</p></article>
-          <article><h3>看護シフトAI</h3><p>CSP最適化 · 工数−70%</p></article>
-          <article><h3>オフショアBridge</h3><p>QA指摘−30〜40%</p></article>
-          <article><h3>AI業務自動化</h3><p>Dify+OpenAI · 工数−60%</p></article>
-          <article><h3>ECチャットボット</h3><p>CVR×1.7 · 離脱−20%</p></article>
+    <!-- 3 DAY / NIGHT DEV -->
+    <section class="sec" data-i="3" data-mood="desk">
+      <div class="sec-grid">
+        <div class="copy">
+          <p class="eyebrow">参 · Continuum</p>
+          <h2>昼は設計、夜はエージェント</h2>
+          <p class="lede">朝はレビューと境界づけ。夜はRAGと監視、デプロイの静かな火。</p>
+          <div class="split-stat">
+            <div><span>DAY</span><p>アーキテクチャ · API · レビュー</p></div>
+            <div><span>NIGHT</span><p>Agent · ログ · 深夜の出荷</p></div>
+          </div>
         </div>
+        <figure class="frame">
+          <img src="/images/ai-chain-japan.png" alt="AIとチェーンの日本的ビジュアル" />
+          <figcaption>鳥居の向こうの台帳 — AI × Chain</figcaption>
+        </figure>
       </div>
     </section>
 
-    <!-- 06 Japan / 山・川・名所 -->
-    <section class="section" data-i="6">
-      <div class="panel wide">
-        <p class="kicker">06 — Japan Landscape</p>
-        <h2>山 · 川 · 名所</h2>
-        <p class="jp">富士山 / 信濃・利根の流れ / 厳島・嵐山</p>
-        <p>左は<strong>雪を戴く山</strong>、中央は<strong>谷を縫う川</strong>、右は<strong>鳥居と竹の名所</strong>。砂丘ではなく、日本の地形として読み取れるよう立体化しています。</p>
+    <!-- 4 AI + CHAIN SKILLS -->
+    <section class="sec" data-i="4" data-mood="circuit">
+      <div class="sec-head">
+        <p class="eyebrow">四 · Intelligence &amp; Ledger</p>
+        <h2>新時代の技術骨格</h2>
+        <p class="lede">エージェントとRAG。冪等な決済台帳。検証可能な乱数。伝統の「間」を、プロトコルに翻訳する。</p>
+      </div>
+      <div class="skill-band">
+        <article>
+          <h3>AI / Agent / RAG</h3>
+          <p class="yrs">5年+</p>
+          <p>OpenAI · Claude · LangChain · Dify · pgvector · 業務ワークフロー化</p>
+        </article>
+        <article>
+          <h3>Backend / Ledger</h3>
+          <p class="yrs">6年+</p>
+          <p>FastAPI · Spring Boot · 冪等性 · Saga · 金融トランザクション</p>
+        </article>
+        <article>
+          <h3>Cloud / SLA</h3>
+          <p class="yrs">5年+</p>
+          <p>ECS · EKS · RDS · Lambda · Multi-AZ 99.9% · CloudWatch</p>
+        </article>
+        <article>
+          <h3>On-chain Fairness</h3>
+          <p class="yrs">設計思想</p>
+          <p>Commit–reveal · VRF · 監査可能なゲーム / ベット設計</p>
+        </article>
+      </div>
+      <div class="duo tight">
+        <figure class="frame">
+          <img src="/images/crypto-japan.png" alt="暗号資産と日本の風景" />
+          <figcaption>Minted value · 富士の前のコイン</figcaption>
+        </figure>
+        <figure class="frame">
+          <img src="/images/betting-blockchain.png" alt="ブロックチェーンとゲーム" />
+          <figcaption>Provably fair · 検証可能な遊戯</figcaption>
+        </figure>
       </div>
     </section>
 
-    <!-- 07 Architecture -->
-    <section class="section" data-i="7">
-      <div class="panel">
-        <p class="kicker">07 — Systems</p>
-        <h2>立体アーキテクチャ</h2>
-        <p class="jp">RAG · Ledger · Cloud — 構造図を3Dで</p>
-        <p>ドキュメント→Chunk→Embedding→pgvector→Agent。金融Ledgerの冪等キー。Multi-AZの可用性。設計を空間として見せる。</p>
+    <!-- 5 CAREER -->
+    <section class="sec" data-i="5" data-mood="ink">
+      <div class="sec-head">
+        <p class="eyebrow">伍 · Career</p>
+        <h2>職務の縦糸</h2>
+        <p class="lede">約8年 — FinTech / GovTech / SaaS / AI。業務構造をシステムへ変換し、最大60%の工数削減まで運んだ線。</p>
+      </div>
+      <ol class="career-rail">
+        <li>
+          <time>2019 — 2022</time>
+          <div>
+            <h3>RedSquare Technologies</h3>
+            <p>E-Wallet Ledger（数千TPS）· 行政ECS · 加盟店Kafka。決済の整合性を標準化。</p>
+            <ul class="chips"><li>+35% latency</li><li>99.9% SLA</li><li>冪等キー</li></ul>
+          </div>
+        </li>
+        <li>
+          <time>2022 — 2024</time>
+          <div>
+            <h3>株式会社Scoville</h3>
+            <p>看護シフトCSP最適化 · SaaSのDDD分割。厳密解と計算コストのあいだを実用時間へ。</p>
+            <ul class="chips"><li>工数−70%</li><li>DDD</li><li>CI/CD</li></ul>
+          </div>
+        </li>
+        <li>
+          <time>2024 — 2025</time>
+          <div>
+            <h3>CMC Japan</h3>
+            <p>オフショア・ブリッジ。曖昧要件をOpenAPIへ。QA標準化で指摘率30–40%改善。</p>
+            <ul class="chips"><li>Bridge</li><li>OpenAPI</li><li>QA</li></ul>
+          </div>
+        </li>
+        <li>
+          <time>2025 — 現在</time>
+          <div>
+            <h3>Freelance · AI</h3>
+            <p>Difyエージェント · RAG · ECチャット。CVR×1.7、業務−60%。</p>
+            <ul class="chips"><li>Agent</li><li>RAG</li><li>CVR×1.7</li></ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 6 CASES -->
+    <section class="sec" data-i="6" data-mood="gold">
+      <div class="sec-head">
+        <p class="eyebrow">六 · Outcomes</p>
+        <h2>数字で残る仕事</h2>
+      </div>
+      <div class="metrics">
+        <article><strong>+35%</strong><span>E-Wallet 応答</span></article>
+        <article><strong>99.9%</strong><span>行政プラットフォーム</span></article>
+        <article><strong>−70%</strong><span>シフト作成工数</span></article>
+        <article><strong>−60%</strong><span>AI業務自動化</span></article>
+        <article><strong>×1.7</strong><span>EC CVR</span></article>
+        <article><strong>−40%</strong><span>QA指摘</span></article>
       </div>
     </section>
 
-    <!-- 08 On-chain / games (kept theme) -->
-    <section class="section" data-i="8">
-      <div class="panel">
-        <p class="kicker">08 — Fairness</p>
-        <h2>検証可能なゲーム設計</h2>
-        <p class="jp">Commit–reveal · VRF · 監査可能な乱数</p>
-        <p>ブロックチェーン領域でも、金融と同じく整合性と監査性を設計の中心に置く。</p>
-      </div>
-    </section>
-
-    <!-- 09 Contact -->
-    <section class="section" data-i="9">
-      <div class="panel wide contact-panel">
-        <p class="kicker">09 — Contact</p>
-        <h2>連絡先</h2>
-        <p class="jp">埼玉県上尾市 · フルリモート対応可</p>
-        <address class="contact">
-          <p><strong>森 幸夫</strong>（もり ゆきお）</p>
-          <p>〒362-0014 埼玉県上尾市本町5-17-13</p>
-          <p>
-            <a href="mailto:ka6994388@gmail.com">ka6994388@gmail.com</a><br />
-            <a href="mailto:hiroki.kodan2025@gmail.com">hiroki.kodan2025@gmail.com</a>
-          </p>
-          <p>
-            <a href="tel:+818017015122">+81 80-1701-5122</a> ·
-            <a href="tel:+817083076747">070-8307-6747</a>
-          </p>
+    <!-- 7 CONTACT -->
+    <section class="sec contact-sec" id="contact" data-i="7" data-mood="close">
+      <div class="sec-grid">
+        <div class="copy">
+          <p class="eyebrow">七 · Contact</p>
+          <h2>閾を、一緒に設計しましょう</h2>
+          <p class="lede">埼玉県上尾市 · フルリモート可。AIエージェント、台帳、夜のプロダクトまで。</p>
+          <address class="vcard">
+            <p class="vn">森 幸夫 <span>もり ゆきお</span></p>
+            <p>〒362-0014 埼玉県上尾市本町5-17-13</p>
+            <p><a href="mailto:ka6994388@gmail.com">ka6994388@gmail.com</a></p>
+            <p><a href="mailto:hiroki.kodan2025@gmail.com">hiroki.kodan2025@gmail.com</a></p>
+            <p><a href="tel:+818017015122">+81 80-1701-5122</a> · <a href="tel:+817083076747">070-8307-6747</a></p>
+          </address>
           <ul class="social">
             <li><a href="https://github.com/crystal70916" target="_blank" rel="noopener">GitHub</a></li>
-            <li><a href="https://t.me/famouspig" target="_blank" rel="noopener">Telegram @famouspig</a></li>
+            <li><a href="https://t.me/famouspig" target="_blank" rel="noopener">Telegram</a></li>
             <li><a href="https://line.me/ti/p/xzKQWqFKsU" target="_blank" rel="noopener">LINE</a></li>
             <li><a href="https://www.chatwork.com/beauty0313" target="_blank" rel="noopener">Chatwork</a></li>
-            <li><a href="https://yukio-mori-portfoilio.vercel.app/" target="_blank" rel="noopener">既存Portfolio</a></li>
             <li><a href="https://drive.google.com/drive/folders/1cPgG2k9e_0UAsPA90DbfCw2tTaXC-5wb?usp=drive_link" target="_blank" rel="noopener">Drive</a></li>
           </ul>
-        </address>
+        </div>
+        <figure class="frame">
+          <img src="/images/salon-interior.png" alt="朱のサロン" />
+          <figcaption>灯の残る部屋で、次のプロトコルを</figcaption>
+        </figure>
       </div>
     </section>
   </main>
 
+  <p id="hint">Scroll · 旅をする</p>
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>
