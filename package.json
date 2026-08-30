@@ -1,0 +1,15 @@
+{
+  "name": "japan-blockchain-3d-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "three": "^0.185.1",
+    "vite": "^6.3.5"
+  }
+}

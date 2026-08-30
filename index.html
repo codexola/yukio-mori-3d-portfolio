@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>森 幸夫 | Mori Yukio — Full-Stack &amp; AI Engineer</title>
+  <meta name="description" content="約8年 — FinTech / GovTech / SaaS / AI。バックエンド・AI・クラウドを横断するフルスタックエンジニア。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div id="loader" aria-live="polite">
+    <span class="loader-mark">森</span>
+    <span class="loader-label">Rendering continuum · 昼と夜</span>
+  </div>
+
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <div id="vignette" aria-hidden="true"></div>
+  <div id="grain" aria-hidden="true"></div>
+
+  <header id="brand">
+    <p class="brand-name">森 幸夫</p>
+    <p class="brand-en">MORI YUKIO</p>
+    <p class="brand-role">Full-Stack · AI · Technical Lead</p>
+    <nav class="brand-links">
+      <a href="https://github.com/crystal70916" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:ka6994388@gmail.com">Mail</a>
+      <a href="https://t.me/famouspig" target="_blank" rel="noopener">Telegram</a>
+    </nav>
+  </header>
+
+  <div id="progress" role="navigation" aria-label="Sections"></div>
+  <p id="hint"><span>Scroll</span> · 旅をはじめる</p>
+
+  <main id="scroll">
+    <!-- 00 Hero -->
+    <section class="section hero" data-i="0">
+      <div class="panel hero-panel">
+        <p class="kicker">PORTFOLIO · 2026</p>
+        <h1>森 幸夫</h1>
+        <p class="jp">Mori Yukio · フルスタック / AI / テクニカルリード</p>
+        <p class="lead">「技術は、静かに人の仕事を支えるためにある。」</p>
+        <p>冒頭の立体は<strong>富士山</strong>（雪・岩・樹林）。砂丘ではありません。スクロールで山・川・名所、経歴、昼と夜の開発へ。</p>
+      </div>
+    </section>
+
+    <!-- 01 Profile -->
+    <section class="section" data-i="1">
+      <div class="panel wide">
+        <p class="kicker">01 — Profile</p>
+        <h2>経歴概要</h2>
+        <p class="jp">業務構造を、システム設計へ変換する</p>
+        <p>約8年間、バックエンドおよびAIエンジニアとして高トラフィック決済基盤、行政クラウド化、SaaSマイクロサービス化、AIエージェント/RAG構築まで一貫して担当。直近の生成AI業務自動化では最大<strong>60%</strong>の工数削減を実現。</p>
+        <ul class="pillars">
+          <li><strong>課題起点の設計</strong> — 暗黙知を構造化し、実装可能な仕様へ</li>
+          <li><strong>0→1〜運用</strong> — PoCで終わらず、本番まで一気通貫</li>
+          <li><strong>グローバル適応</strong> — オフショアブリッジで曖昧要件を仕様化</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 02 Day / Night -->
+    <section class="section" data-i="2">
+      <div class="panel">
+        <p class="kicker">02 — Continuum</p>
+        <h2>昼と夜の開発者</h2>
+        <p class="jp">Days of design · Nights of shipping</p>
+        <p>朝はアーキテクチャとレビュー。夕暮れから深夜はエージェント、RAG、監視アラートと向き合う。机のランプが点くとき、コードはまだ生きている。</p>
+      </div>
+    </section>
+
+    <!-- 03 Skills -->
+    <section class="section" data-i="3">
+      <div class="panel wide">
+        <p class="kicker">03 — Expertise</p>
+        <h2>専門技術</h2>
+        <p class="jp">Core stack · 立体化したスキルマップ</p>
+        <div class="skill-grid">
+          <article>
+            <h3>AI / Agent / RAG</h3>
+            <p class="yrs">実務 5年+</p>
+            <p>OpenAI · Claude · LangChain · Dify · RAG · pgvector</p>
+          </article>
+          <article>
+            <h3>Backend</h3>
+            <p class="yrs">実務 6年+</p>
+            <p>FastAPI · Spring Boot · REST/OpenAPI · 冪等性 · 非同期/バッチ</p>
+          </article>
+          <article>
+            <h3>AWS / Cloud</h3>
+            <p class="yrs">実務 5年+</p>
+            <p>ECS · EKS · EC2 · RDS · S3 · Lambda · Multi-AZ 99.9%</p>
+          </article>
+          <article>
+            <h3>DB / Ledger</h3>
+            <p class="yrs">実務 5年+</p>
+            <p>PostgreSQL · MySQL · 金融Ledger · Index · Query tuning</p>
+          </article>
+          <article>
+            <h3>推進 / Bridge</h3>
+            <p class="yrs">実務 8年+</p>
+            <p>要件定義 · PM補佐/PL · オフショア · QA標準化</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 Career -->
+    <section class="section" data-i="4">
+      <div class="panel wide">
+        <p class="kicker">04 — Career</p>
+        <h2>職務経歴</h2>
+        <p class="jp">沿革 · 2019 — 現在</p>
+        <ol class="timeline">
+          <li>
+            <time>2019.02 — 2022.01</time>
+            <strong>RedSquare Technologies</strong>
+            <span>FinTech / GovTech · BE / 設計リード補佐</span>
+          </li>
+          <li>
+            <time>2022.05 — 2024.02</time>
+            <strong>株式会社Scoville</strong>
+            <span>AI · SaaS · テックリード補佐</span>
+          </li>
+          <li>
+            <time>2024.03 — 2025.09</time>
+            <strong>CMC Japan</strong>
+            <span>ブリッジ / API設計責任者</span>
+          </li>
+          <li>
+            <time>2025.11 — 現在</time>
+            <strong>フリーランス</strong>
+            <span>AIエージェント · RAG · 業務自動化</span>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 05 Cases -->
+    <section class="section" data-i="5">
+      <div class="panel wide">
+        <p class="kicker">05 — Cases</p>
+        <h2>主な実績</h2>
+        <p class="jp">Selected outcomes · NDAにより一部抽象化</p>
+        <div class="cases">
+          <article><h3>E-Wallet決済基盤</h3><p>数千TPS · Ledger · 性能+35%</p></article>
+          <article><h3>デジタル行政</h3><p>FastAPI · ECS · 稼働率99.9%</p></article>
+          <article><h3>看護シフトAI</h3><p>CSP最適化 · 工数−70%</p></article>
+          <article><h3>オフショアBridge</h3><p>QA指摘−30〜40%</p></article>
+          <article><h3>AI業務自動化</h3><p>Dify+OpenAI · 工数−60%</p></article>
+          <article><h3>ECチャットボット</h3><p>CVR×1.7 · 離脱−20%</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 Japan / 山・川・名所 -->
+    <section class="section" data-i="6">
+      <div class="panel wide">
+        <p class="kicker">06 — Japan Landscape</p>
+        <h2>山 · 川 · 名所</h2>
+        <p class="jp">富士山 / 信濃・利根の流れ / 厳島・嵐山</p>
+        <p>左は<strong>雪を戴く山</strong>、中央は<strong>谷を縫う川</strong>、右は<strong>鳥居と竹の名所</strong>。砂丘ではなく、日本の地形として読み取れるよう立体化しています。</p>
+      </div>
+    </section>
+
+    <!-- 07 Architecture -->
+    <section class="section" data-i="7">
+      <div class="panel">
+        <p class="kicker">07 — Systems</p>
+        <h2>立体アーキテクチャ</h2>
+        <p class="jp">RAG · Ledger · Cloud — 構造図を3Dで</p>
+        <p>ドキュメント→Chunk→Embedding→pgvector→Agent。金融Ledgerの冪等キー。Multi-AZの可用性。設計を空間として見せる。</p>
+      </div>
+    </section>
+
+    <!-- 08 On-chain / games (kept theme) -->
+    <section class="section" data-i="8">
+      <div class="panel">
+        <p class="kicker">08 — Fairness</p>
+        <h2>検証可能なゲーム設計</h2>
+        <p class="jp">Commit–reveal · VRF · 監査可能な乱数</p>
+        <p>ブロックチェーン領域でも、金融と同じく整合性と監査性を設計の中心に置く。</p>
+      </div>
+    </section>
+
+    <!-- 09 Contact -->
+    <section class="section" data-i="9">
+      <div class="panel wide contact-panel">
+        <p class="kicker">09 — Contact</p>
+        <h2>連絡先</h2>
+        <p class="jp">埼玉県上尾市 · フルリモート対応可</p>
+        <address class="contact">
+          <p><strong>森 幸夫</strong>（もり ゆきお）</p>
+          <p>〒362-0014 埼玉県上尾市本町5-17-13</p>
+          <p>
+            <a href="mailto:ka6994388@gmail.com">ka6994388@gmail.com</a><br />
+            <a href="mailto:hiroki.kodan2025@gmail.com">hiroki.kodan2025@gmail.com</a>
+          </p>
+          <p>
+            <a href="tel:+818017015122">+81 80-1701-5122</a> ·
+            <a href="tel:+817083076747">070-8307-6747</a>
+          </p>
+          <ul class="social">
+            <li><a href="https://github.com/crystal70916" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://t.me/famouspig" target="_blank" rel="noopener">Telegram @famouspig</a></li>
+            <li><a href="https://line.me/ti/p/xzKQWqFKsU" target="_blank" rel="noopener">LINE</a></li>
+            <li><a href="https://www.chatwork.com/beauty0313" target="_blank" rel="noopener">Chatwork</a></li>
+            <li><a href="https://yukio-mori-portfoilio.vercel.app/" target="_blank" rel="noopener">既存Portfolio</a></li>
+            <li><a href="https://drive.google.com/drive/folders/1cPgG2k9e_0UAsPA90DbfCw2tTaXC-5wb?usp=drive_link" target="_blank" rel="noopener">Drive</a></li>
+          </ul>
+        </address>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
