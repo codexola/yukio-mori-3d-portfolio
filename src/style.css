@@ -1439,3 +1439,220 @@ body[data-mood="close"] #atmosphere {
 .sec.in .sec-head.present {
   animation: riseStrong .9s cubic-bezier(0.22,1,0.36,1) both;
 }
+
+/* ========== V3: dual-image slide + soft (non-triangle) shapes ========== */
+
+/* Dual-image horizontal slide (current + previous) */
+.slide-window {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+}
+.slide-track {
+  display: flex;
+  width: 200%;
+  height: 100%;
+  animation: dualSlide 9s cubic-bezier(0.65, 0.05, 0.36, 1) infinite;
+  will-change: transform;
+}
+.slide-track img {
+  flex: 0 0 50%;
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.tile-media .slide-window {
+  position: absolute;
+  inset: 0;
+}
+.flow-band > .slide-window,
+.tile.flow-band .tile-media .slide-window {
+  z-index: 2;
+}
+.flow-band > .slide-window { position: absolute; inset: 0; }
+
+@keyframes dualSlide {
+  0%,
+  38% {
+    transform: translateX(0);
+  }
+  48%,
+  88% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Stagger per frame so windows don't sync */
+.slide-track.delay-a { animation-duration: 8.2s; animation-delay: 0s; }
+.slide-track.delay-b { animation-duration: 9.4s; animation-delay: -1.2s; }
+.slide-track.delay-c { animation-duration: 8.8s; animation-delay: -2.4s; }
+.slide-track.delay-d { animation-duration: 10.2s; animation-delay: -0.6s; }
+.slide-track.delay-e { animation-duration: 7.6s; animation-delay: -1.8s; }
+.slide-track.delay-f { animation-duration: 9.8s; animation-delay: -3s; }
+.slide-track.delay-g { animation-duration: 8.5s; animation-delay: -0.9s; }
+.slide-track.delay-h { animation-duration: 10.6s; animation-delay: -2.1s; }
+.slide-track.delay-i { animation-duration: 11s; animation-delay: -1.5s; }
+.slide-track.delay-j { animation-duration: 9.1s; animation-delay: -3.3s; }
+.slide-track.delay-k { animation-duration: 8.9s; animation-delay: -0.4s; }
+
+/* Soft dome — replaces triangular mountain */
+.shape-dome,
+.shape-dome .tile-media {
+  clip-path: none !important;
+  border-radius: 50% 50% 1.35rem 1.35rem / 38% 38% 1.35rem 1.35rem !important;
+  overflow: hidden;
+}
+.shape-dome .shape-ring,
+.shape-dome.flow-band > .shape-ring,
+.shape-dome.flow-band::before,
+.shape-dome.flow-band::after,
+.shape-dome .tile-media .shape-ring,
+.shape-dome .tile-media::before,
+.shape-dome .tile-media::after {
+  clip-path: none !important;
+  border-radius: 50% 50% 1.35rem 1.35rem / 38% 38% 1.35rem 1.35rem !important;
+}
+.shape-dome .tile-body {
+  border-radius: 0 0 1.35rem 1.35rem;
+}
+
+/* Soft gate — torii as rounded lintel, not sharp polygon */
+.shape-gate,
+.shape-gate .tile-media {
+  clip-path: none !important;
+  border-radius: 1.75rem 1.75rem 0.85rem 0.85rem / 2.4rem 2.4rem 0.85rem 0.85rem !important;
+  overflow: hidden;
+}
+.shape-gate .shape-ring,
+.shape-gate.flow-band > .shape-ring,
+.shape-gate.flow-band::before,
+.shape-gate.flow-band::after,
+.shape-gate .tile-media .shape-ring,
+.shape-gate .tile-media::before,
+.shape-gate .tile-media::after {
+  clip-path: none !important;
+  border-radius: 1.75rem 1.75rem 0.85rem 0.85rem / 2.4rem 2.4rem 0.85rem 0.85rem !important;
+}
+.shape-gate .tile-body {
+  border-radius: 0 0 0.85rem 0.85rem;
+  clip-path: none;
+}
+
+/* Soft wave — rounded crest, no jagged peaks */
+.shape-wave .tile-media {
+  clip-path: none !important;
+  border-radius: 2.5rem 2.5rem 1rem 1rem / 1.8rem 1.8rem 1rem 1rem !important;
+}
+.shape-wave .shape-ring,
+.shape-wave .tile-media .shape-ring,
+.shape-wave .tile-media::before,
+.shape-wave .tile-media::after {
+  clip-path: none !important;
+  border-radius: 2.5rem 2.5rem 1rem 1rem / 1.8rem 1.8rem 1rem 1rem !important;
+}
+
+/* Soft blade — neon frame, asymmetric curves (not parallelogram points) */
+.shape-blade {
+  clip-path: none !important;
+  border-radius: 2.8rem 0.7rem 2.8rem 0.7rem !important;
+  overflow: hidden;
+  animation: borderGlow 4s ease-in-out infinite;
+}
+.shape-blade .shape-ring,
+.shape-blade.flow-band > .shape-ring,
+.shape-blade.flow-band::before,
+.shape-blade.flow-band::after {
+  clip-path: none !important;
+  border-radius: 2.8rem 0.7rem 2.8rem 0.7rem !important;
+  border-color: rgba(255, 77, 109, 0.65);
+}
+
+/* Organic petal — AI / chain */
+.shape-petal {
+  clip-path: none !important;
+  border-radius: 62% 38% 58% 42% / 48% 55% 45% 52% !important;
+  overflow: hidden;
+}
+.shape-petal .shape-ring,
+.shape-petal.flow-band > .shape-ring,
+.shape-petal.flow-band::before,
+.shape-petal.flow-band::after {
+  clip-path: none !important;
+  border-radius: 62% 38% 58% 42% / 48% 55% 45% 52% !important;
+  border-color: rgba(94, 200, 216, 0.65);
+}
+
+/* Soft gem — replaces sharp diamond */
+.shape-soft-gem {
+  clip-path: none !important;
+  border-radius: 32% !important;
+  overflow: hidden;
+  aspect-ratio: 1 / 1 !important;
+}
+.shape-soft-gem .shape-ring,
+.shape-soft-gem.flow-band > .shape-ring,
+.shape-soft-gem.flow-band::before,
+.shape-soft-gem.flow-band::after {
+  clip-path: none !important;
+  border-radius: 32% !important;
+  border-color: rgba(194, 58, 43, 0.55);
+}
+.shape-soft-gem figcaption {
+  bottom: 12%;
+  background: linear-gradient(transparent, rgba(8, 6, 10, 0.85));
+}
+
+/* True soft arch — contact */
+.shape-arch {
+  clip-path: none !important;
+  border-radius: 50% 50% 1.1rem 1.1rem / 32% 32% 1.1rem 1.1rem !important;
+  overflow: hidden;
+}
+.shape-arch .shape-ring,
+.shape-arch.flow-band > .shape-ring,
+.shape-arch.flow-band::before,
+.shape-arch.flow-band::after {
+  clip-path: none !important;
+  border-radius: 50% 50% 1.1rem 1.1rem / 32% 32% 1.1rem 1.1rem !important;
+}
+
+/* Soften remaining pointed panels / metrics */
+.shape-panel-c {
+  clip-path: none !important;
+  border-radius: 1.6rem 0.55rem 1.6rem 0.55rem !important;
+}
+.shape-metric {
+  clip-path: none !important;
+  border-radius: 1.4rem 0.45rem 1.6rem 0.55rem !important;
+}
+
+/* Kill legacy triangle / diamond / hex / slash / mountain clips if any linger */
+.shape-mountain,
+.shape-mountain .tile-media,
+.shape-diamond,
+.shape-hex,
+.shape-slash,
+.shape-torii .tile-media {
+  clip-path: none !important;
+}
+
+@media (max-width: 980px) {
+  .shape-soft-gem {
+    aspect-ratio: 16 / 10 !important;
+    max-width: 100%;
+    margin-inline: auto;
+    border-radius: 28% !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide-track {
+    animation: none !important;
+    transform: translateX(0);
+  }
+}
