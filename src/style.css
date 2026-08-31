@@ -325,7 +325,7 @@ body[data-mood="close"] #atmosphere {
 /* —— Frames / images —— */
 .frame {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   isolation: isolate;
   aspect-ratio: 16 / 10;
   background: var(--sumi);
@@ -350,18 +350,56 @@ body[data-mood="close"] #atmosphere {
   /* hover handled by section animations */
 }
 
-.frame figcaption {
+.frame figcaption,
+.frame figcaption.title-band {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 3;
-  padding: 2.5rem 1.1rem 0.9rem;
+  left: 5%;
+  right: 5%;
+  bottom: 1rem;
+  top: auto;
+  z-index: 6;
+  padding: 0.55rem 0;
   font-family: var(--font-jp);
-  font-size: 0.82rem;
-  letter-spacing: 0.12em;
-  background: linear-gradient(transparent, rgba(8, 6, 10, 0.92));
+  font-size: 0.84rem;
+  letter-spacing: 0.14em;
+  background: rgba(8, 6, 12, 0.88);
   color: #f0e6d8;
+  border: 1px solid rgba(198, 164, 90, 0.5);
+  border-radius: 999px;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 1.4;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+}
+
+.title-band-track {
+  display: inline-flex;
+  width: max-content;
+  gap: 2.5rem;
+  padding-inline: 1.25rem;
+  animation: titleBandRtl 18s linear infinite;
+  will-change: transform;
+}
+
+.title-band-track span {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.title-band-track span::after {
+  content: "  ·  ";
+  opacity: 0.45;
+  color: var(--kin);
+}
+
+@keyframes titleBandRtl {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-33.333%);
+  }
 }
 
 .hero-frame {
@@ -1058,7 +1096,7 @@ body[data-mood="close"] #atmosphere {
   border-color: rgba(198, 164, 90, 0.7);
 }
 .shape-coin figcaption {
-  border-radius: 0 0 50% 50%;
+  border-radius: 999px !important;
 }
 
 /* Diamond — betting */
@@ -1071,8 +1109,9 @@ body[data-mood="close"] #atmosphere {
   border-color: rgba(194, 58, 43, 0.55);
 }
 .shape-diamond figcaption {
+  top: auto;
   bottom: 18%;
-  background: linear-gradient(transparent, rgba(8, 6, 10, 0.85));
+  background: rgba(8, 6, 12, 0.9);
 }
 
 /* Arch — contact */
@@ -1603,8 +1642,9 @@ body[data-mood="close"] #atmosphere {
   border-color: rgba(194, 58, 43, 0.55);
 }
 .shape-soft-gem figcaption {
-  bottom: 12%;
-  background: linear-gradient(transparent, rgba(8, 6, 10, 0.85));
+  top: auto;
+  bottom: 18%;
+  background: rgba(8, 6, 12, 0.9);
 }
 
 /* True soft arch — contact */
@@ -1654,5 +1694,196 @@ body[data-mood="close"] #atmosphere {
   .slide-track {
     animation: none !important;
     transform: translateX(0);
+  }
+}
+
+/* ========== V4: title bands fully visible + RTL flow ========== */
+/* Keep shape clipping on media only — never clip the caption band */
+.frame.shape-dome,
+.frame.shape-gate,
+.frame.shape-wave,
+.frame.shape-fan,
+.frame.shape-blade,
+.frame.shape-oval,
+.frame.shape-capsule,
+.frame.shape-petal,
+.frame.shape-coin,
+.frame.shape-soft-gem,
+.frame.shape-arch,
+.frame.shape-hex,
+.frame.shape-slash,
+.frame.shape-mountain,
+.frame.shape-diamond {
+  overflow: visible !important;
+  clip-path: none !important;
+}
+
+.frame > .slide-window {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  background: var(--sumi);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+
+/* Mirror each frame shape onto the image window only */
+.frame.shape-dome > .slide-window {
+  border-radius: 50% 50% 1.35rem 1.35rem / 38% 38% 1.35rem 1.35rem;
+}
+.frame.shape-gate > .slide-window {
+  border-radius: 1.75rem 1.75rem 0.85rem 0.85rem / 2.4rem 2.4rem 0.85rem 0.85rem;
+}
+.frame.shape-fan > .slide-window {
+  border-radius: 50% / 42%;
+}
+.frame.shape-blade > .slide-window {
+  border-radius: 2.8rem 0.7rem 2.8rem 0.7rem;
+}
+.frame.shape-oval > .slide-window {
+  border-radius: 50%;
+}
+.frame.shape-capsule > .slide-window {
+  border-radius: 40% / 18%;
+}
+.frame.shape-petal > .slide-window {
+  border-radius: 62% 38% 58% 42% / 48% 55% 45% 52%;
+}
+.frame.shape-coin > .slide-window {
+  border-radius: 50%;
+}
+.frame.shape-soft-gem > .slide-window {
+  border-radius: 32%;
+}
+.frame.shape-arch > .slide-window {
+  border-radius: 50% 50% 1.1rem 1.1rem / 32% 32% 1.1rem 1.1rem;
+}
+
+.frame.flow-band {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.frame.flow-band > .slide-window {
+  z-index: 2;
+}
+
+.frame figcaption.title-band,
+.flow-band > figcaption.title-band {
+  position: absolute !important;
+  left: 5% !important;
+  right: 5% !important;
+  top: auto !important;
+  bottom: 1.05rem !important;
+  z-index: 8 !important;
+  width: auto;
+  max-width: none;
+  padding: 0.55rem 0 !important;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-radius: 999px !important;
+  background: rgba(8, 6, 12, 0.9) !important;
+  border: 1px solid rgba(198, 164, 90, 0.5);
+  clip-path: none !important;
+  text-align: left;
+}
+
+/* Round / oval frames: lift the band into the wide mid-zone so nothing is cut */
+.frame.shape-oval > figcaption.title-band,
+.frame.shape-coin > figcaption.title-band,
+.frame.shape-fan > figcaption.title-band,
+.frame.shape-petal > figcaption.title-band,
+.frame.shape-soft-gem > figcaption.title-band {
+  left: 12% !important;
+  right: 12% !important;
+  bottom: 18% !important;
+}
+
+.frame.shape-dome > figcaption.title-band,
+.frame.shape-arch > figcaption.title-band {
+  left: 8% !important;
+  right: 8% !important;
+  bottom: 1.25rem !important;
+}
+
+.title-band-track {
+  display: inline-flex;
+  width: max-content;
+  gap: 2.75rem;
+  padding-inline: 1.5rem;
+  animation: titleBandRtl 18s linear infinite;
+  will-change: transform;
+}
+
+.frame:nth-of-type(2n) .title-band-track {
+  animation-duration: 22s;
+}
+.frame:nth-of-type(3n) .title-band-track {
+  animation-duration: 16s;
+}
+
+/* Tile image title bands (same RTL flow) */
+.tile-media > .title-band {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: 0.85rem;
+  z-index: 5;
+  padding: 0.45rem 0;
+  font-family: var(--font-jp);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: #f0e6d8;
+  background: rgba(8, 6, 12, 0.9);
+  border: 1px solid rgba(198, 164, 90, 0.45);
+  border-radius: 999px;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 1.35;
+  pointer-events: none;
+  clip-path: none !important;
+}
+.tile.shape-dome .tile-media > .title-band {
+  left: 10%;
+  right: 10%;
+  bottom: 0.95rem;
+}
+
+/* Clip tile photos only — keep title band unclipped */
+.tile .tile-media {
+  overflow: visible !important;
+  clip-path: none !important;
+}
+.tile .tile-media > .slide-window {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 2;
+}
+.tile.shape-dome .tile-media > .slide-window {
+  border-radius: 50% 50% 1.35rem 1.35rem / 38% 38% 1.35rem 1.35rem;
+}
+.tile.shape-wave .tile-media > .slide-window {
+  border-radius: 2.5rem 2.5rem 1rem 1rem / 1.8rem 1.8rem 1rem 1rem;
+}
+.tile.shape-gate .tile-media > .slide-window {
+  border-radius: 1.75rem 1.75rem 0.85rem 0.85rem / 2.4rem 2.4rem 0.85rem 0.85rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title-band-track {
+    animation: none !important;
+    transform: none !important;
+    justify-content: center;
+    width: 100%;
+    padding-inline: 1rem;
+  }
+  .title-band-track span[aria-hidden="true"] {
+    display: none;
+  }
+  .title-band-track span::after {
+    content: none;
   }
 }
